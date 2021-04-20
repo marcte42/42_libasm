@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libasm.h                                           :+:      :+:    :+:   */
+/*   libasm_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcte <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 11:03:34 by marcte            #+#    #+#             */
-/*   Updated: 2021/04/11 21:48:28 by marcte           ###   ########.fr       */
+/*   Updated: 2021/04/20 09:10:22 by marcte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 typedef struct	s_list
 {
@@ -17,7 +19,7 @@ typedef struct	s_list
 }		t_list;
 
 
-int	ft_strlen(char *s);
+size_t	ft_strlen(char *s);
 char	*ft_strcpy(char *d, char *s);
 int	ft_strcmp(char *s1, char *s2);
 int	ft_write(int fd, char *s, int len);
