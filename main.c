@@ -161,31 +161,4 @@ int	main(void)
 
 	printf("%s\n", ft_strdup(sss1));
 	printf("%s\n", ft_strdup(sss2));
-
-
-
-	printf("\n");
-	printf("###\n");
-	printf("LISTS\n");
-	printf("###\n");
-	printf("\n");
-	
-	t_list *lst;
-
-	lst = 0;
-	ft_list_push_front(&lst, ft_lstnew("a"));
-	ft_list_push_front(&lst, ft_lstnew("b"));
-	ft_list_push_front(&lst, ft_lstnew("c"));
-	ft_list_push_front(&lst, ft_lstnew("d"));
-	ft_list_push_front(&lst, ft_lstnew("e"));
-	ft_list_push_front(&lst, ft_lstnew("f"));
-	ft_list_push_front(&lst, ft_lstnew("g"));
-
-	printf("list size : %d\n", ft_list_size(lst));
-	while (lst)
-	{
-		printf("%s   ", (char *)lst->content);
-		lst = lst->next;
-	}
-	printf("\n");
 }
