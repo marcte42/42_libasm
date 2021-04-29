@@ -20,28 +20,8 @@ int	ft_write(int fd, char *s, int len);
 int	ft_read(int fd, char *s, int len);
 char	*ft_strdup(char *s);
 int	ft_list_size(t_list *lst);
-t_list	*ft_list_push_front(t_list **alst, t_list *new);
+void ft_list_push_front(t_list **alst, void *data);
 
-
-t_list	*ft_lstnew(void *content)
-
-{
-
-	t_list *node;
-
-
-
-	if (!(node = (t_list *)malloc(sizeof(t_list))))
-
-		return (NULL);
-
-	node->next = 0;
-
-	node->content = content;
-
-	return (node);
-
-}
 
 int	main(void)
 {
@@ -54,13 +34,13 @@ int	main(void)
 	t_list *lst;
 
 	lst = 0;
-	ft_list_push_front(&lst, ft_lstnew("a"));
-	ft_list_push_front(&lst, ft_lstnew("b"));
-	ft_list_push_front(&lst, ft_lstnew("c"));
-	ft_list_push_front(&lst, ft_lstnew("d"));
-	ft_list_push_front(&lst, ft_lstnew("e"));
-	ft_list_push_front(&lst, ft_lstnew("f"));
-	ft_list_push_front(&lst, ft_lstnew("g"));
+	ft_list_push_front(&lst, strdup("abc"));
+	ft_list_push_front(&lst, strdup("bcd"));
+	ft_list_push_front(&lst, strdup("cde"));
+	ft_list_push_front(&lst, strdup("def"));
+	ft_list_push_front(&lst, strdup("efg"));
+	ft_list_push_front(&lst, strdup("fgh"));
+	ft_list_push_front(&lst, strdup("ghi"));
 
 	printf("list size : %d\n", ft_list_size(lst));
 	while (lst)
