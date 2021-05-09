@@ -21,6 +21,8 @@ int	ft_read(int fd, char *s, int len);
 char	*ft_strdup(char *s);
 int	ft_list_size(t_list *lst);
 void ft_list_push_front(t_list **alst, void *data);
+int ft_atoi_base(char *str, char *base);
+
 
 
 int	main(void)
@@ -49,4 +51,6 @@ int	main(void)
 		lst = lst->next;
 	}
 	printf("\n");
+	#include <limits.h>
+	printf("%d\n", ft_atoi_base("  -800000", "0123456789"));
 }
