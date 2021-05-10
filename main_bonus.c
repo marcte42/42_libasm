@@ -22,6 +22,7 @@ char	*ft_strdup(char *s);
 int	ft_list_size(t_list *lst);
 void ft_list_push_front(t_list **alst, void *data);
 int ft_atoi_base(char *str, char *base);
+int ft_list_sort(t_list **begin_list, int(*cmp)());
 
 
 
@@ -29,28 +30,68 @@ int	main(void)
 {
 	printf("\n");
 	printf("###\n");
-	printf("LISTS\n");
+	printf("FT_ATOI_BASE\n");
+	printf("###\n");
+	printf("\n");
+
+	printf("'  -800000' in decimal : %d\n", ft_atoi_base("  -800000", "0123456789"));
+	printf("'1f40' in hex : %d\n", ft_atoi_base("1f40", "0123456789abcdef"));
+	printf("INT_MAX in decimal : %d\n", ft_atoi_base("+2147483647", "0123456789"));
+	printf("INT_MIN in decimal : %d\n", ft_atoi_base("-2147483648", "0123456789"));
+	printf("' --7fffffff' in hex : %d\n", ft_atoi_base(" --7fffffff", "0123456789abcdef"));
+	printf("'-+-+-+--80000000' in hex : %d\n", ft_atoi_base("-+-+-+--80000000", "0123456789abcdef"));
+	printf("'-27a45' in decimal : %d\n", ft_atoi_base("-27a45", "0123456789"));
+	printf("'-0' in decimal : %d\n", ft_atoi_base("-0", "0123456789"));
+	printf("'-1' in decimal : %d\n", ft_atoi_base("-1", "0123456789"));
+	printf("'-10' in decimal : %d\n", ft_atoi_base("-10", "0123456789"));
+	printf("'a' in hex : %d\n", ft_atoi_base("a", "0123456789abcdef"));
+	printf("'42' in hex : %d\n", ft_atoi_base("42", "0123456789abcdef"));
+
+	printf("\n");
+	printf("###\n");
+	printf("LIST_PUSH_FRONT\n");
 	printf("###\n");
 	printf("\n");
 	
 	t_list *lst;
+	t_list *ptr;
 
 	lst = 0;
-	ft_list_push_front(&lst, strdup("abc"));
-	ft_list_push_front(&lst, strdup("bcd"));
-	ft_list_push_front(&lst, strdup("cde"));
-	ft_list_push_front(&lst, strdup("def"));
-	ft_list_push_front(&lst, strdup("efg"));
-	ft_list_push_front(&lst, strdup("fgh"));
-	ft_list_push_front(&lst, strdup("ghi"));
+	ft_list_push_front(&lst, strdup("albert"));
+	ft_list_push_front(&lst, strdup("edouard"));
+	ft_list_push_front(&lst, strdup("charles"));
+	ft_list_push_front(&lst, strdup("maurice"));
+	ft_list_push_front(&lst, strdup("laurent"));
 
-	printf("list size : %d\n", ft_list_size(lst));
-	while (lst)
+	printf("LIST : ");
+	ptr = lst;
+	while (ptr)
 	{
-		printf("%s   ", (char *)lst->content);
-		lst = lst->next;
+		printf("%s   ", (char *)ptr->content);
+		ptr = ptr->next;
 	}
 	printf("\n");
-	#include <limits.h>
-	printf("%d\n", ft_atoi_base("  -800000", "0123456789"));
+
+	printf("\n");
+	printf("###\n");
+	printf("LIST_SIZE : ");
+	printf("%d\n", ft_list_size(lst));
+	printf("###\n");
+	printf("\n");
+	
+	printf("###\n");
+	printf("LIST_SORT\n");
+	printf("###\n");
+	printf("\n");
+
+	printf("%d\n", ft_list_sort(&lst, &strcmp));
+	printf("SORTED LIST : ");
+	
+	ptr = lst;
+	while (ptr)
+	{
+		printf("%s   ", (char *)ptr->content);
+		ptr = ptr->next;
+	}
+	printf("\n");
 }

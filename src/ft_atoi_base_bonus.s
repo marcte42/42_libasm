@@ -46,6 +46,7 @@ base_inner_loop:
 	
 convert:
 	mov		r13, 1
+	mov		rax, 0
 skip:
 	cmp		byte [rdi], ' '
 	jne		skip_sign
@@ -64,7 +65,7 @@ skip_sign:
 skip_sign_plus:
 	inc		rdi
 	jmp		skip_sign
-
+a
 skip_sign_minus:
 	inc		rdi
 	neg		r13
@@ -77,10 +78,10 @@ get_nb_loop:
 	cmp		byte [rdi], 0
 	je		return
 	movzx	r11, byte [rdi]
-	imul	rax, r14
 	jmp		get_index
 
 add_index:
+	imul	rax, r14
 	add		rax, rcx
 	inc		rdi
 	jmp		get_nb_loop
@@ -97,7 +98,7 @@ get_index_loop:
 	jmp		get_index_loop
 
 error:
-	mov		rax, 0
+	imul	rax, r13
 	ret
 
 return:
