@@ -3,12 +3,11 @@ bits 64
 global ft_list_sort
 
 ft_list_sort:
-	
 	mov		r14, [rdi]
-	mov		rdx, r14
+	mov		r10, r14
 	mov		r13, rsi
 
-loop:
+sloop:
 	mov		r15, [r14 + 8]
 	cmp		r15, 0
 	je		return
@@ -19,15 +18,15 @@ loop:
 	cmp		rax, 0
 	jg		swap
 	mov		r14, r15
-	jmp		loop
+	jmp		sloop
 
 swap:
 	mov		r11, [r14]
 	mov		r12, [r15]
 	mov		[r14], r12
 	mov		[r15], r11
-	mov		r14, rdx
-	jmp		loop
+	mov		r14, r10
+	jmp		sloop
 
 return:
 	ret

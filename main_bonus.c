@@ -24,7 +24,26 @@ void ft_list_push_front(t_list **alst, void *data);
 int ft_atoi_base(char *str, char *base);
 int ft_list_sort(t_list **begin_list, int(*cmp)());
 
+void	ft_list_sort_c(t_list **begin_list, int(*cmp)())
+{
+	t_list *lst;
+	void *tmp;
 
+	lst = *begin_list;
+
+	while (lst->next)
+	{
+		if (strcmp(lst->content, lst->next->content) > 0)
+		{
+			tmp = lst->content;
+			lst->content = lst->next->content;
+			lst->next->content = tmp;
+			lst = *begin_list;
+		}
+		else
+			lst = lst->next;
+	}
+}
 
 int	main(void)
 {
@@ -84,7 +103,7 @@ int	main(void)
 	printf("###\n");
 	printf("\n");
 
-	printf("%d\n", ft_list_sort(&lst, &strcmp));
+	ft_list_sort(&lst, &strcmp);
 	printf("SORTED LIST : ");
 	
 	ptr = lst;
