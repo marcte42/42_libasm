@@ -23,14 +23,15 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf libasm
-	rm -rf a.out
+	rm -rf test
+	rm -rf test_bonus
 
 re: fclean all
 
 test: all
-	clang-9 main.c -L. -lasm
+	clang -o test main.c -L. -lasm
 
 test_bonus: bonus
-	clang-9 main_bonus.c -L. -lasm
+	clang -o test_bonus main_bonus.c -L. -lasm
 
 .PHONY: all clean fclean re
