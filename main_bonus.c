@@ -75,7 +75,7 @@ int	main(void)
 	t_list *lst;
 	t_list *ptr;
 
-	lst = 0;
+	lst = NULL;
 	ft_list_push_front(&lst, strdup("albert"));
 	ft_list_push_front(&lst, strdup("edouard"));
 	ft_list_push_front(&lst, strdup("charles"));
@@ -103,7 +103,7 @@ int	main(void)
 	printf("###\n");
 	printf("\n");
 
-	ft_list_sort(&lst, &strcmp);
+	printf("%d\n", ft_list_sort(&lst, &ft_strcmp));
 	printf("SORTED LIST : ");
 	
 	ptr = lst;
