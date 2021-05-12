@@ -4,6 +4,10 @@ global ft_atoi_base
 extern ft_strlen
 
 ft_atoi_base:
+	push	r12
+	push	r13
+	push	r14
+	push	r15
 	cmp		rdi, 0
 	je		error
 	cmp		rsi, 0
@@ -48,8 +52,21 @@ convert:
 	mov		r13, 1
 	mov		rax, 0
 skip:
-	cmp		byte [rdi], ' '
-	jne		skip_sign
+	cmp		byte [rdi], 32
+	je		skip_space
+	cmp		byte [rdi], 9
+	je		skip_space
+	cmp		byte [rdi], 10
+	je		skip_space
+	cmp		byte [rdi], 11
+	je		skip_space
+	cmp		byte [rdi], 12
+	je		skip_space
+	cmp		byte [rdi], 13
+	je		skip_space
+	cmp		byte [rdi], 127
+	je		skip_space
+	jmp		skip_sign
 
 skip_space:
 	inc		rdi
@@ -65,7 +82,7 @@ skip_sign:
 skip_sign_plus:
 	inc		rdi
 	jmp		skip_sign
-a
+
 skip_sign_minus:
 	inc		rdi
 	neg		r13
@@ -90,7 +107,7 @@ get_index:
 	mov		rcx, 0
 get_index_loop:
 	cmp		byte [rsi + rcx], 0
-	je		error
+	je		exit
 	movzx	r12, byte [rsi + rcx]
 	cmp		r11, r12
 	je		add_index
@@ -98,9 +115,25 @@ get_index_loop:
 	jmp		get_index_loop
 
 error:
+	mov		rax, 0 
+	pop		r15
+	pop		r14
+	pop		r13
+	pop		r12
+	ret
+
+exit:
 	imul	rax, r13
+	pop		r15
+	pop		r14
+	pop		r13
+	pop		r12
 	ret
 
 return:
 	imul	rax, r13
+	pop		r15
+	pop		r14
+	pop		r13
+	pop		r12
 	ret

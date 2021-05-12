@@ -22,7 +22,7 @@ char	*ft_strdup(char *s);
 int	ft_list_size(t_list *lst);
 void ft_list_push_front(t_list **alst, void *data);
 int ft_atoi_base(char *str, char *base);
-int ft_list_sort(t_list **begin_list, int(*cmp)());
+void ft_list_sort(t_list **begin_list, int(*cmp)());
 
 void	ft_list_sort_c(t_list **begin_list, int(*cmp)())
 {
@@ -53,7 +53,7 @@ int	main(void)
 	printf("###\n");
 	printf("\n");
 
-	printf("'  -800000' in decimal : %d\n", ft_atoi_base("  -800000", "0123456789"));
+	printf("'  -800000' in decimal : %d\n", ft_atoi_base("-12a3", "0123456789"));
 	printf("'1f40' in hex : %d\n", ft_atoi_base("1f40", "0123456789abcdef"));
 	printf("INT_MAX in decimal : %d\n", ft_atoi_base("+2147483647", "0123456789"));
 	printf("INT_MIN in decimal : %d\n", ft_atoi_base("-2147483648", "0123456789"));
@@ -103,7 +103,7 @@ int	main(void)
 	printf("###\n");
 	printf("\n");
 
-	printf("%d\n", ft_list_sort(&lst, &ft_strcmp));
+	ft_list_sort(&lst, &ft_strcmp);
 	printf("SORTED LIST : ");
 	
 	ptr = lst;
