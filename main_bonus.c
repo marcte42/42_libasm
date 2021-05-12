@@ -53,7 +53,7 @@ int	main(void)
 	printf("###\n");
 	printf("\n");
 
-	printf("'  -800000' in decimal : %d\n", ft_atoi_base("-12a3", "0123456789"));
+	printf("'-12a3' in decimal : %d\n", ft_atoi_base("-12a3", "0123456789"));
 	printf("'1f40' in hex : %d\n", ft_atoi_base("1f40", "0123456789abcdef"));
 	printf("INT_MAX in decimal : %d\n", ft_atoi_base("+2147483647", "0123456789"));
 	printf("INT_MIN in decimal : %d\n", ft_atoi_base("-2147483648", "0123456789"));

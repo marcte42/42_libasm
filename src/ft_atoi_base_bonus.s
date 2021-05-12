@@ -64,8 +64,6 @@ skip:
 	je		skip_space
 	cmp		byte [rdi], 13
 	je		skip_space
-	cmp		byte [rdi], 127
-	je		skip_space
 	jmp		skip_sign
 
 skip_space:
