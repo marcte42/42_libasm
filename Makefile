@@ -34,4 +34,4 @@ test: all
 test_bonus: bonus
 	clang -o test_bonus main_bonus.c -L. -lasm
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test test_bonus
