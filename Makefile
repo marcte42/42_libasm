@@ -29,9 +29,9 @@ fclean: clean
 re: fclean all
 
 test: all
-	clang -o test main.c -L. -lasm
+	clang-9 -o test main.c -L. -lasm
 
 test_bonus: bonus
-	clang -o test_bonus main_bonus.c -L. -lasm
+	clang-9 -o test_bonus main_bonus.c -L. -lasm
 
 .PHONY: all clean fclean re test test_bonus
